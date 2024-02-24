@@ -15,6 +15,13 @@ spawn_enemies()
 def check_bullet_collisions():
     if pygame.sprite.groupcollide(player_bullet_group, enemy_group, True, True):
         pass
+    if pygame.sprite.spritecollide(my_player, enemy_bullet_group, True):
+        pass
+    if pygame.sprite.groupcollide(player_bullet_group, enemy_bullet_group, True, True):
+        pass
+    
+    
+    
 level =1
 def check_edge_collisions():
     on_edge = False
@@ -44,5 +51,7 @@ while running == True:
     enemy_group.draw(screen)
     player_bullet_group.update()
     player_bullet_group.draw(screen)
+    enemy_bullet_group.update()
+    enemy_bullet_group.draw(screen)
     
     pygame.display.update()
