@@ -1,9 +1,4 @@
-import pygame
-
-screen_width = 992
-screen_height = 736
-screen = pygame.display.set_mode((screen_width, screen_height))
-
-
-fps = 60
-clock = pygame.time.Clock()
+screen_width = 1000
+screen_height = 700
+FPS = 60
+TILE_SIZE = 50

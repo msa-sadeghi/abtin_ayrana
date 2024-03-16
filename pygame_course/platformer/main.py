@@ -1,13 +1,26 @@
+import pygame
+
 from constants import *
 from world import World
+from levels.level_creator import world_data
 
-game_world = World()
+pygame.init()
+
+screen = pygame.display.set_mode((screen_width, screen_height))
+
+clock = pygame.time.Clock()
+
+world = World(world_data)
+
+bg_img = pygame.image.load("assets/sky.png")
 
 running = True
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    game_world.draw()       
+    screen.blit(bg_img, (0,0))
+    world.draw(screen)
     pygame.display.update()
-    clock.tick(fps)
+    clock.tick(FPS)
+
