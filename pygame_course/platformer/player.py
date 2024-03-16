@@ -7,7 +7,7 @@ class Player(Sprite):
         
         self.right_images = []
         self.left_images = []
-        for i in range(1, 9):
+        for i in range(1, 5):
             img = pygame.image.load(f"assets/guy{i}.png")
             img = pygame.transform.scale(img, (64, 64))
             self.right_images.append(img)
