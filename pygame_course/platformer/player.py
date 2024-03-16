@@ -28,3 +28,42 @@ class Player(Sprite):
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+        
+    def update(self, tiles):
+        dx = 0
+        dy = 0
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.idle = False
+            dx -= 5
+        if keys[pygame.K_RIGHT]:
+            self.idle = False
+            dx += 5
+        if not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
+            self.idle = True
+        if keys[pygame.K_SPACE]   :
+            self.vel_y = -15
+        dy += self.vel_y
+        self.vel_y += 1
+           
+        for t in tiles:
+            if t[1].colliderect(self.rect.x + dx , self.rect.y, self.image.get_width(), self.image.get_height()):
+                dx = 0
+            if t[1].colliderect(self.rect.x , self.rect.y + dy, self.image.get_width(), self.image.get_height()):
+                self.vel_y = 0
+                dy = 0
+     
+        self.rect.x += dx
+        self.rect.y += dy
+        self.animation()
+
+    def animation(self):
+        self.counter += 1
+        if self.counter >= 10:
+            self.frame_index += 1
+            self.counter = 0
+        if self.frame_index >= len(self.right_images) or self.idle:
+            self.frame_index = 0
+        self.image = self.right_images[self.frame_index]
+        
+        
