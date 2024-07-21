@@ -34,9 +34,11 @@ class Player(Sprite):
         dy = 0
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
+            self.direction = -1
             self.idle = False
             dx -= 5
         if keys[pygame.K_RIGHT]:
+            self.direction = 1
             self.idle = False
             dx += 5
         if not keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
@@ -64,6 +66,10 @@ class Player(Sprite):
             self.counter = 0
         if self.frame_index >= len(self.right_images) or self.idle:
             self.frame_index = 0
-        self.image = self.right_images[self.frame_index]
+        if self.direction == 1:
+            self.image = self.right_images[self.frame_index]
+        elif self.direction == -1:
+            self.image = self.left_images[self.frame_index]
+            
         
         
