@@ -1,4 +1,4 @@
-import pickle
+
 world_data = [
     [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
     [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
@@ -17,18 +17,3 @@ world_data = [
     
 ]
 
-# f = open("levels\level1.txt", "w")
-# f.write("salaam")
-# f.close()
-
-# input()
-
-# with open("levels\level1.txt", "w") as f:
-#     f.write(str(world_data))
-
-with open("levels\level1", "wb") as f:
-    pickle.dump(world_data, f)
-
-# with open("levels\level1", "rb") as f:
-#     world_data = pickle.load(f)
-#     print(world_data[0][0])

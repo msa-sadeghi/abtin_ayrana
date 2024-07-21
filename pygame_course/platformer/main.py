@@ -5,12 +5,12 @@ from world import World
 from levels.level_creator import world_data
 from player import Player
 pygame.init()
-
+enemy_group = pygame.sprite.Group()
 screen = pygame.display.set_mode((screen_width, screen_height))
 
 clock = pygame.time.Clock()
 
-world = World(world_data)
+world = World(world_data, enemy_group)
 
 my_player = Player(100, 500)
 
@@ -25,6 +25,8 @@ while running:
     world.draw(screen)
     my_player.draw(screen)
     my_player.update(world.tile_list)
+    enemy_group.update()
+    enemy_group.draw(screen)
     pygame.display.update()
     clock.tick(FPS)
 
